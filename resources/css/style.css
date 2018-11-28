@@ -51,7 +51,7 @@ body {
 }
 
 /* ------------------------------- */
-/* Header */
+/* Header Section */
 /* ------------------------------- */
 .header-background-img {
 	background-image: -webkit-gradient(
@@ -67,72 +67,105 @@ body {
   url('../img/hero.jpg');
 }
 
+.header-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-60%);
+}
+
 .header-logo {
   height: 33px;
   width: auto;
 }
 
-.header-heading {
-  font-size: 3.3rem;
+.header-h1 {
+  font-size: 4.0rem;
   letter-spacing: 32px;
   margin: auto;
 }
 
-.header-desc {
-  font-size: 1.0rem;
+.header-h4 {
+  font-size: 1.4rem; 
   font-weight: 900;
   letter-spacing: 17px;
   margin: auto;
 }
 
-.header-btn {
+/* Header Buttons */
+.header-btn, 
+.header-btn:link,
+.header-btn:visited {
   color: gray;
   border-radius: 25px;
-  font-size: .9rem;
+  font-size: 1.1rem;
   font-weight: 400;
-  padding: 12px 25px 12px 25px;
+  padding: 14px 28px 14px 28px;
+}
+
+.header-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0px 10px 100px rgba(0, 0, 0, .2);
 }
 
 /* Header Responsive Design */
-@media (max-width: 875px) {
+@media (max-width: 1200px) {
+  .header-h1 {
+    font-size: 3.6rem;
+  }
+
+  .header-h4 {
+    font-size: 1.1rem;
+  }
+
+  .header-btn {
+    font-size: .9rem;
+    padding: 12px 25px 12px 25px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-h1 {
+    font-size: 3.3rem;
+  }
+  
+  .header-h4 {
+    font-size: 1.0rem;
+  }
+}
+
+@media (max-width: 768px) {
   body {
     padding: 0;
   }
 
   .header-logo {
     height: 28px;
-    width: auto;
   }
   
-  .header-heading {
+  .header-h1 {
     font-size: 3.0rem;
     letter-spacing: 29px;
-    margin: auto;
   }
   
-  .header-desc {
+  .header-h4 {
     font-size: .9rem;
-    font-weight: 900;
     letter-spacing: 15px;
-    margin: auto;
   }
   
   .header-btn {
-    color: gray;
-    border-radius: 25px;
     font-size: .8rem;
-    font-weight: 400;
     padding: 10px 22px 10px 22px;
   }
 }
 
 @media (max-width: 576px) {
-  .header-heading {
+  .header-h1 {
     letter-spacing: 9px;
   }
   
-  .header-desc {
-    letter-spacing: 5px;
+  .header-h4 {
+    letter-spacing: 8px;
   }
 }
 
@@ -156,15 +189,18 @@ body {
   }
 }
 
+/* from opacity:0 to opacity:1 allows fade-in transition */
 @keyframes header-slidein-right {
   from {
     -webkit-transform: translateX(-100px);
             transform: translateX(-100px);
+            opacity: 0;
   }
 
   to {
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
+            opacity: 1;
   }
 }
 
@@ -191,23 +227,25 @@ body {
   from {
     -webkit-transform: translateX(100px);
             transform: translateX(100px);
+            opacity: 0;
   }
 
   to {
     -webkit-transform: translateX(0px);
             transform: translateX(0px);
+            opacity: 1;
   }
 }
 
 .header-slidein-top {
-  visibility: hidden;
   -webkit-animation-duration: 1.0s;
           animation-duration: 1.0s;
   -webkit-animation-delay: .5s;
           animation-delay: .5s;
-  /* setting to forwards will retain the style values that is set by the last keyframe */
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  /* setting to backwards applies the values defined in the first relevant keyframe 
+  as soon as it is applied to the target, and retain this during the animation-delay period */
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
   -webkit-animation-name: header-slidein-top;
           animation-name: header-slidein-top;
 }
@@ -221,7 +259,6 @@ body {
   to {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    visibility: visible;
   }
 }
 
@@ -229,11 +266,13 @@ body {
   from {
     -webkit-transform: translateY(50px);
             transform: translateY(50px);
+            opacity: 0;
   }
 
   to {
     -webkit-transform: translateY(0px);
             transform: translateY(0px);
-    visibility: visible;
+            opacity: 1;
   }
 }
+
