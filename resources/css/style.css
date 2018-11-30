@@ -8,24 +8,37 @@ Dark green: #28b485
 /* ------------------------------- */
 /* Default CSS */
 /* ------------------------------- */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  /* box-sizing is not inherited by default */
+  /* the below says all child elements of body will inherit 
+  body { box-sizing: border-box } */
+  box-sizing: inherit;
+}
+
+html {
+  /* font-size defined in html as this is considered the "root" element */
+  /* change all px to rem for responsive design changes all in one place */
+  /* set to % instead of px so users can change font size */
+  /* set to 62.5%(10px/16px) for easy calculations of rem unit */
+  font-size: 100%;
+}
+
+body {
   /* accounts for border and padding of the element */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   line-height: 150%;
-}
-
-body {
   background-color: #FFF;
   color: #777;
   font-family: Lato, Arial, sans-serif;
   font-weight: 300;
-  font-size: 20px;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
-  padding: 30px;
+  padding: 1rem;
 }
 
 /* ------------------------------- */
@@ -75,20 +88,20 @@ body {
 }
 
 .header-logo {
-  height: 33px;
+  height: 2.5rem;
   width: auto;
 }
 
 .header-h1 {
-  font-size: 4.0rem;
-  letter-spacing: 32px;
+  font-size: 5rem;
+  letter-spacing: 2.3rem;
   margin: auto;
 }
 
 .header-h4 {
-  font-size: 1.4rem; 
-  font-weight: 900;
-  letter-spacing: 17px;
+  font-size: 1.5rem; 
+  font-weight: 700;
+  letter-spacing: 1.3rem;
   margin: auto;
 }
 
@@ -97,40 +110,48 @@ body {
 .header-btn:link,
 .header-btn:visited {
   color: gray;
-  border-radius: 25px;
-  font-size: 1.1rem;
+  border-radius: 2.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
-  padding: 14px 28px 14px 28px;
+  padding: .9rem 1.8rem .9rem 1.8rem;
 }
 
 .header-btn:active {
-  transform: translateY(3px);
-  box-shadow: 0px 10px 100px rgba(0, 0, 0, .2);
+  transform: translateY(.3rem);
+  box-shadow: 0 1rem 5rem rgba(0, 0, 0, .2);
 }
 
 /* Header Responsive Design */
 @media (max-width: 1200px) {
+  .header-logo {
+    height: 2.25rem;
+  }
+
   .header-h1 {
-    font-size: 3.6rem;
+    font-size: 4rem;
+    letter-spacing: 2.07rem;
   }
 
   .header-h4 {
-    font-size: 1.1rem;
+    font-size: 1.35rem;
+    letter-spacing: 1.1rem;
   }
 
   .header-btn {
-    font-size: .9rem;
-    padding: 12px 25px 12px 25px;
+    font-size: 1.08rem;
+    padding: .81rem 1.62rem .81rem 1.62rem;
   }
 }
 
 @media (max-width: 992px) {
   .header-h1 {
-    font-size: 3.3rem;
+    font-size: 3.5rem;
+    letter-spacing: 1.7rem;
   }
   
   .header-h4 {
-    font-size: 1.0rem;
+    font-size: 1.4rem;
+    letter-spacing: .75rem;
   }
 }
 
@@ -140,32 +161,34 @@ body {
   }
 
   .header-logo {
-    height: 28px;
+    height: 1.7rem;
   }
   
   .header-h1 {
-    font-size: 3.0rem;
-    letter-spacing: 29px;
+    font-size: 3rem;
+    letter-spacing: 1.2rem;
   }
   
   .header-h4 {
-    font-size: .9rem;
-    letter-spacing: 15px;
+    font-size: 1.2rem;
+    letter-spacing: .6rem;
   }
-  
+
   .header-btn {
-    font-size: .8rem;
-    padding: 10px 22px 10px 22px;
+    font-size: .9rem;
+    padding: .6em 1.2rem .6rem 1.2rem;
   }
 }
 
 @media (max-width: 576px) {
   .header-h1 {
-    letter-spacing: 9px;
+    font-size: 2.7rem;
+    letter-spacing: .5rem;
   }
   
   .header-h4 {
-    letter-spacing: 8px;
+    font-size: 1rem;
+    letter-spacing: .35rem;
   }
 }
 
@@ -179,27 +202,27 @@ body {
 
 @-webkit-keyframes header-slidein-right {
   from {
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
   }
 
   to {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 
 /* from opacity:0 to opacity:1 allows fade-in transition */
 @keyframes header-slidein-right {
   from {
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
             opacity: 0;
   }
 
   to {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
             opacity: 1;
   }
 }
@@ -213,26 +236,26 @@ body {
 
 @-webkit-keyframes header-slidein-left {
   from {
-    -webkit-transform: translateX(100px);
-            transform: translateX(100px);
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
   }
 
   to {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 
 @keyframes header-slidein-left {
   from {
-    -webkit-transform: translateX(100px);
-            transform: translateX(100px);
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
             opacity: 0;
   }
 
   to {
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
             opacity: 1;
   }
 }
@@ -252,26 +275,26 @@ body {
 
 @-webkit-keyframes header-slidein-top {
   from {
-    -webkit-transform: translateY(50px);
-            transform: translateY(50px);
+    -webkit-transform: translateY(5rem);
+            transform: translateY(5rem);
   }
 
   to {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
 @keyframes header-slidein-top {
   from {
-    -webkit-transform: translateY(50px);
-            transform: translateY(50px);
+    -webkit-transform: translateY(5rem);
+            transform: translateY(5rem);
             opacity: 0;
   }
 
   to {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
             opacity: 1;
   }
 }
